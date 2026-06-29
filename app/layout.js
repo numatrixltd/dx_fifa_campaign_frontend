@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Argentica — Wear your team's frame",
+  title: "DX FIFA Fever — Wear your team's frame",
   description: "Pick your country, upload your photo, get a fan frame.",
 };
 
