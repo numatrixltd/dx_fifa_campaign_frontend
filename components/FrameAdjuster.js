@@ -3,7 +3,13 @@
 import { useCallback, useState } from "react";
 import Cropper from "react-easy-crop";
 
-export default function FrameAdjuster({ photoUrl, frameImageUrl, aspect, onApply, onCancel }) {
+export default function FrameAdjuster({
+  photoUrl,
+  frameImageUrl,
+  aspect,
+  onApply,
+  onCancel,
+}) {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
@@ -14,7 +20,10 @@ export default function FrameAdjuster({ photoUrl, frameImageUrl, aspect, onApply
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="relative aspect-square w-80 overflow-hidden rounded-2xl bg-black/40">
+      <div
+        className="relative w-80 overflow-hidden rounded-2xl bg-black/40"
+        style={{ aspectRatio: aspect }}
+      >
         <Cropper
           image={photoUrl}
           crop={crop}
@@ -23,6 +32,7 @@ export default function FrameAdjuster({ photoUrl, frameImageUrl, aspect, onApply
           cropShape="rect"
           showGrid={false}
           restrictPosition={true}
+          objectFit="cover"
           onCropChange={setCrop}
           onZoomChange={setZoom}
           onCropComplete={onCropComplete}
